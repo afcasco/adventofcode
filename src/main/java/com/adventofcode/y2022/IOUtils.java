@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class IOUtils {
     public static List<List<Integer>> readData(String fileName) {
-        List<List<Integer>> data = new ArrayList<>();
+        var data = new ArrayList<List<Integer>>();
 
         try {
             File file = new File(fileName);

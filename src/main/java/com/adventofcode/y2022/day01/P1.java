@@ -1,4 +1,4 @@
-package com.adventofcode.y2022.day1;
+package com.adventofcode.y2022.day01;
 
 import java.io.File;
 import java.util.ArrayList;

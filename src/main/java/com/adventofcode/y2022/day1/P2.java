@@ -1,0 +1,44 @@
+package com.adventofcode.y2022.day1;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
+
+public class P2 {
+    public static void main(String[] args) {
+        List<List<Integer>> data = new ArrayList<>();
+
+        try {
+            File file = new File("input1");
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                List<Integer> calories = new ArrayList<>();
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    if (line.isEmpty()) {
+                        break;
+                    } else {
+                        calories.add(Integer.parseInt(line));
+                    }
+                }
+                data.add(calories);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        int result = data.stream()
+                .map(list -> list.stream()
+                        .mapToInt(num -> num)
+                        .sum())
+                .mapToInt(sum -> sum)
+                .boxed()
+                .sorted(Comparator.reverseOrder())
+                .limit(3)
+                .mapToInt(i -> i)
+                .sum();
+        System.out.println(result);
+    }
+}

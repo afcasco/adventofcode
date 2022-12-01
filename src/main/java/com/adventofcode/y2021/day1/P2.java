@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class P2 {
     public static void main(String[] args) {
         List<Integer> data;
-        try (Stream<String> givenData = Files.lines(Path.of("input1"))) {
+        try (Stream<String> givenData = Files.lines(Path.of("day01input"))) {
             data = givenData.map(Integer::parseInt).toList();
 
             System.out.println("reading file...");

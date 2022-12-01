@@ -5,10 +5,10 @@ import com.adventofcode.y2022.UtilsES;
 import java.util.Comparator;
 import java.util.List;
 
-public class P2 {
+public class Part2 {
 
-    public static int day01Part2(){
-        List<List<Integer>> data = UtilsES.readData("input1");
+    public static int solution(){
+        List<List<Integer>> data = UtilsES.readData("day01input");
         return data.stream()
                 .map(list -> list.stream()
                         .mapToInt(num -> num)

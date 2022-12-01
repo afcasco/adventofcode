@@ -4,9 +4,9 @@ import com.adventofcode.y2022.UtilsES;
 
 import java.util.List;
 
-public class P1 {
-    public static int day01Part1() {
-        List<List<Integer>> data = UtilsES.readData("input1");
+public class Part1 {
+    public static int solution() {
+        List<List<Integer>> data = UtilsES.readData("day01input");
 
         return data.stream()
                 .map(i -> i.stream()

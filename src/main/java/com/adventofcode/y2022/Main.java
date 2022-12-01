@@ -1,12 +1,13 @@
 package com.adventofcode.y2022;
 
-import static com.adventofcode.y2022.day01.P1.day01solution;
-import static com.adventofcode.y2022.day01.P2.day02solution;
+
+import com.adventofcode.y2022.day01.Part1;
+import com.adventofcode.y2022.day01.Part2;
 
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Day 1 solution: " + day01solution());
-        System.out.println("Day 2 solution: " + day02solution());
+        System.out.println("Day 1 solution: " + Part1.solution() + " calories.");
+        System.out.println("Day 2 solution: " + Part2.solution() + " calories.");
     }
 }

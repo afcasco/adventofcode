@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class UtilsES {
+public class IOUtils {
     public static List<List<Integer>> readData(String fileName) {
         List<List<Integer>> data = new ArrayList<>();
 

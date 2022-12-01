@@ -7,7 +7,7 @@ import java.util.List;
 
 public class P2 {
 
-    public static int day02solution(){
+    public static int day01Part2(){
         List<List<Integer>> data = UtilsES.readData("input1");
         return data.stream()
                 .map(list -> list.stream()

@@ -5,7 +5,7 @@ import com.adventofcode.y2022.UtilsES;
 import java.util.List;
 
 public class P1 {
-    public static int day01solution() {
+    public static int day01Part1() {
         List<List<Integer>> data = UtilsES.readData("input1");
 
         return data.stream()

@@ -1,12 +1,16 @@
 package com.adventofcode.y2022;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class IOUtils {
-    public static List<List<Integer>> readData(String fileName) {
+    public static List<List<Integer>> readDay01(String fileName) {
         var data = new ArrayList<List<Integer>>();
 
         try {
@@ -28,5 +32,20 @@ public class IOUtils {
             throw new RuntimeException(e);
         }
         return data;
+    }
+
+    public static List<String> readData(String fileName){
+        Path file = Path.of(System.getProperty("user.dir")+
+                File.separator + "src" +
+                File.separator + "main" +
+                File.separator+"resources"+
+                File.separator+fileName);
+        List<String> list = new ArrayList<>();
+        try(Stream<String> data = Files.lines(file)){
+            data.forEach(list::add);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
     }
 }

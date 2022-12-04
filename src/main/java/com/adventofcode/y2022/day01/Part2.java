@@ -7,7 +7,7 @@ import java.util.Comparator;
 public class Part2 {
 
     public static int solution() {
-        var data = IOUtils.readData("day01input");
+        var data = IOUtils.readDay01("day01input");
         return data.stream()
                 .map(list -> list.stream()
                         .mapToInt(num -> num)

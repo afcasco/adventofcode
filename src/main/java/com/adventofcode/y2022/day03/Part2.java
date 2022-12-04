@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 public class Part2 {
     public static void main(String[] args) {
-        List<String> data = IOUtils.readData("day03input");
+        List<String> data = IOUtils.readInputFile("day03input");
         List<Character> alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".chars()
                 .mapToObj(c -> (char) c)
                 .toList();

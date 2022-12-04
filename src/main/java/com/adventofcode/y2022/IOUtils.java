@@ -34,18 +34,18 @@ public class IOUtils {
         return data;
     }
 
-    public static List<String> readData(String fileName){
+
+
+    public static List<String> readInputFile(String fileName){
         Path file = Path.of(System.getProperty("user.dir")+
                 File.separator + "src" +
                 File.separator + "main" +
                 File.separator+"resources"+
                 File.separator+fileName);
-        List<String> list = new ArrayList<>();
-        try(Stream<String> data = Files.lines(file)){
-            data.forEach(list::add);
+        try {
+            return Files.readAllLines(file);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return list;
     }
 }

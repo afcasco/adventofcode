@@ -33,7 +33,7 @@ public class CrateContainer {
         crateContainer.get(move.destination()).addElements(temp);
     }
 
-    public void moveWithCrate9001(Move move){
+    public void moveWithCrate9001(Move move) {
         List<String> temp = crateContainer.get(move.origin()).removeElements(move.quantity());
         crateContainer.get(move.destination()).addElements9001(temp);
 

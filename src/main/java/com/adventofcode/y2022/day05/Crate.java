@@ -1,11 +1,11 @@
 package com.adventofcode.y2022.day05;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class Crate {
+
     private final List<String> content;
 
     public Crate() {

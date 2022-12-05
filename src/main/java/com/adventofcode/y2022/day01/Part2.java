@@ -1,6 +1,6 @@
 package com.adventofcode.y2022.day01;
 
-import com.adventofcode.y2022.IOUtils;
+import com.adventofcode.utils.IOUtils;
 
 import java.util.Comparator;
 

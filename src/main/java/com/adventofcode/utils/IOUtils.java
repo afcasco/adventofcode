@@ -1,4 +1,4 @@
-package com.adventofcode.y2022;
+package com.adventofcode.utils;
 
 import com.adventofcode.y2022.day05.Move;
 

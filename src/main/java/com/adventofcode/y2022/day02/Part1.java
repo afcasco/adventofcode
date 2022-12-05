@@ -2,6 +2,7 @@ package com.adventofcode.y2022.day02;
 
 import com.adventofcode.y2022.IOUtils;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ public class Part1 {
     private final static int PLAYER = 1;
     private final static int DRAW = 2;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Map<String, Integer> values = Map.of(
                 "A", 0,

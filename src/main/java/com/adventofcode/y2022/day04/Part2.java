@@ -2,6 +2,7 @@ package com.adventofcode.y2022.day04;
 
 import com.adventofcode.y2022.IOUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class Part2 {
         return sections;
     }
 
-    public static int result() {
+    public static int result() throws IOException {
         List<String> data = IOUtils.readInputFile("day04input");
         return (int) data.stream().map(str -> str.split(","))
                 .map(i -> List.of(joinSections(i[0]), joinSections(i[1])))

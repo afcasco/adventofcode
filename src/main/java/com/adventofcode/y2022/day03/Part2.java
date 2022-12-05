@@ -2,12 +2,13 @@ package com.adventofcode.y2022.day03;
 
 import com.adventofcode.y2022.IOUtils;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 
 public class Part2 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         List<String> data = IOUtils.readInputFile("day03input");
         List<Character> alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".chars()
                 .mapToObj(c -> (char) c)

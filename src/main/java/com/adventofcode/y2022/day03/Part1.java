@@ -2,11 +2,12 @@ package com.adventofcode.y2022.day03;
 
 import com.adventofcode.y2022.IOUtils;
 
+import java.io.IOException;
 import java.util.List;
 
 public class Part1 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         List<String> data = IOUtils.readInputFile("day03input"); // Read all lines as list
         int result = data.stream()
                 .map(ln -> new String[]{ln.substring(0, ln.length() / 2), ln.substring(ln.length() / 2)})

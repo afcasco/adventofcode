@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 public class IOUtils {
     public static List<List<Integer>> readDay01(String fileName) {
@@ -35,17 +34,12 @@ public class IOUtils {
     }
 
 
-
-    public static List<String> readInputFile(String fileName){
-        Path file = Path.of(System.getProperty("user.dir")+
+    public static List<String> readInputFile(String fileName) throws IOException {
+        Path file = Path.of(System.getProperty("user.dir") +
                 File.separator + "src" +
                 File.separator + "main" +
-                File.separator+"resources"+
-                File.separator+fileName);
-        try {
-            return Files.readAllLines(file);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+                File.separator + "resources" +
+                File.separator + fileName);
+        return Files.readAllLines(file);
     }
 }

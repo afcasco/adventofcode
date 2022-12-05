@@ -24,17 +24,13 @@ public class CrateContainer {
         }
     }
 
-    public Crate getCrate(int num){
-        return  crateContainer.get(num-1);
-    }
-
-    public List<Crate> getAllCrates(){
+    public List<Crate> getAllCrates() {
         return crateContainer;
     }
 
     public void moveElements(Move move) {
-        List<String> temp = crateContainer.get(move.getOrigin()).removeElements(move.getQuantity());
-        crateContainer.get(move.getDestination()).addElements(temp);
+        List<String> temp = crateContainer.get(move.origin()).removeElements(move.quantity());
+        crateContainer.get(move.destination()).addElements(temp);
     }
 
     @Override

@@ -20,16 +20,16 @@ public class Part1 {
                 .map(i -> i.replaceAll("]", "-"))
                 .toList();
         List<String> normalized = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            normalized.add(list.get(i) + " ".repeat(35 - list.get(i).length()));
+        for (String s : list) {
+            normalized.add(s + " ".repeat(35 - s.length()));
         }
         List<String> newList = new ArrayList<>();
-        for (int j = 0; j < normalized.size(); j++) {
+        for (String s : normalized) {
             StringBuilder builder = new StringBuilder();
             for (int i = 1; i <= 33; i += 4) {
-                if (Character.isAlphabetic(normalized.get(j).charAt(i))) {
-                    builder.append(normalized.get(j).charAt(i));
-                } else if (Character.isSpaceChar(normalized.get(j).charAt(i))) {
+                if (Character.isAlphabetic(s.charAt(i))) {
+                    builder.append(s.charAt(i));
+                } else if (Character.isSpaceChar(s.charAt(i))) {
                     builder.append(" ");
                 }
             }

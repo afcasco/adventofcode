@@ -1,6 +1,7 @@
 package com.adventofcode.y2022.day05;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -22,6 +23,12 @@ public class Crate {
 
     public void addElements(List<String> elements) {
         content.addAll(elements);
+    }
+
+    public void addElements9001(List<String> elements){
+        for(int i=elements.size()-1;i>=0;i--){
+            content.add(elements.get(i));
+        }
     }
 
     public void addElement(String element) {

@@ -38,13 +38,4 @@ public class Crate {
     public String getTopElement() {
         return content.get(content.size() - 1);
     }
-
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        for (String element : content) {
-            builder.append(element).append(",");
-        }
-        return builder.toString();
-    }
 }

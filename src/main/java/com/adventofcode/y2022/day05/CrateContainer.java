@@ -36,13 +36,5 @@ public class CrateContainer {
     public void moveWithCrate9001(Move move) {
         List<String> temp = crateContainer.get(move.origin()).removeElements(move.quantity());
         crateContainer.get(move.destination()).addElements9001(temp);
-
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        crateContainer.forEach(i -> builder.append(i.toString()).append("\n"));
-        return builder.toString();
     }
 }

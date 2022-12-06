@@ -9,7 +9,8 @@ public class Main {
 
     public static int findStart(String input, int length) throws IOException {
         String data = IOUtils.readInputFile(input).get(0);
-        return IntStream.range(length, data.length()).parallel()
+        return IntStream.range(length, data.length())
+                .parallel()
                 .filter(i -> data.substring(i - length, i).chars().distinct().count() == length)
                 .findFirst().orElse(-1);
     }

@@ -20,7 +20,7 @@ public class Main {
         ElfFileSystem fs = new ElfFileSystem(data);
 
         //  Generates a map, keys are all the ElfFileSystem paths, values are all the path contents size added.
-        Map<Path, Integer> pathSize = fs.getElfFileSystemPaths().stream()
+        Map<Path, Integer> pathSize = fs.getFolders().stream()
                 .collect(toMap(path -> path, fs::getPathContentSize));
 
         // --------- Part 1, my input answer 1350966 ---------

@@ -37,11 +37,11 @@ public class ElfFileSystem {
 
     public int getPathContentSize(Path path) {
         return elements.stream()
-                .filter(element -> element.getPath().toString().contains(path.toString()))
+                .filter(element->element.getPath().startsWith(path))
                 .mapToInt(FSElement::getSize).sum();
     }
 
-    public Set<Path> getElfFileSystemPaths() {
+    public Set<Path> getFolders() {
         return elements.stream().map(FSElement::getPath).collect(toSet());
     }
 }

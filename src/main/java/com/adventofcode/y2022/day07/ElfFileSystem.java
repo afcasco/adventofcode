@@ -5,7 +5,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 public class ElfFileSystem {
 
@@ -41,6 +42,6 @@ public class ElfFileSystem {
     }
 
     public Set<Path> getElfFileSystemPaths() {
-        return elements.stream().map(FSElement::getPath).collect(Collectors.toSet());
+        return elements.stream().map(FSElement::getPath).collect(toSet());
     }
 }

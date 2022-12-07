@@ -8,7 +8,8 @@ import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 public class Main {
 
@@ -20,7 +21,7 @@ public class Main {
 
         //  Generates a map, keys are all the ElfFileSystem paths, values are all the path contents size added.
         Map<Path, Integer> pathSize = fs.getElfFileSystemPaths().stream()
-                .collect(Collectors.toMap(i -> i, fs::getPathContentSize));
+                .collect(toMap(path -> path, fs::getPathContentSize));
 
         // --------- Part 1, my input answer 1350966 ---------
         int part1 = pathSize.values().stream().filter(i -> i < 100000).mapToInt(i -> i).sum();

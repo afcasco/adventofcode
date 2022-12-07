@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class Main {
 
     public static void main(String[] args) throws IOException {
@@ -24,7 +23,7 @@ public class Main {
         fs.getElfFileSystemPaths().forEach(i -> pathSize.put(i, fs.getPathContentSize(i)));
 
         // --------- Part 1, my input answer 1350966 ---------
-        int part1 = pathSize.values().stream().filter(i -> i < 100000).mapToInt(i -> i).sum();
+        int part1 = pathSize.values().stream().filter(i -> i <= 100000).mapToInt(i -> i).sum();
         System.out.println("Part 1: " + part1);
 
         //  --------- Part 2, my input answer 6296435 ---------

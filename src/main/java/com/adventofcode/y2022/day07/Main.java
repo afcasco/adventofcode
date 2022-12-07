@@ -15,8 +15,11 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        // Reads input and loads into the ElfFileSystem
         List<String> data = IOUtils.readInputFile("day07input");
         ElfFileSystem fs = new ElfFileSystem(data);
+
+        //  Generates a map with all the paths in the ElfFileSystem with its whole size
         Map<Path, Integer> pathSize = new HashMap<>();
         fs.getElfFileSystemPaths().forEach(i -> pathSize.put(i, fs.getPathContentSize(i)));
 

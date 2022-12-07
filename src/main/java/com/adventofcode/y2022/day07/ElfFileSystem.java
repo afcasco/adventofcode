@@ -35,13 +35,9 @@ public class ElfFileSystem {
     }
 
     public int getPathContentSize(Path path) {
-        int size = 0;
-        for (FSElement element : elements) {
-            if (element.getPath().toString().contains(path.toString())) {
-                size += element.getSize();
-            }
-        }
-        return size;
+        return elements.stream()
+                .filter(element -> element.getPath().toString().contains(path.toString()))
+                .mapToInt(FSElement::getSize).sum();
     }
 
     public Set<Path> getElfFileSystemPaths() {

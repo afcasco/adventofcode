@@ -28,13 +28,15 @@ public class Main {
 
         //  --------- Part 2, my input answer 6296435 ---------
         int neededSpace = pathSize.values().stream()
-                .sorted(Comparator.reverseOrder()).limit(1)
+                .sorted(Comparator.reverseOrder())
+                .limit(1)
                 .findFirst().orElse(-1) + 30000000 - 70000000;
 
         int part2 = pathSize.values().stream().filter(i -> i >= neededSpace)
                 .mapToInt(i -> i)
                 .sorted()
-                .limit(1).findFirst().orElse(-1);
+                .limit(1)
+                .findFirst().orElse(-1);
         System.out.println("Part 2: " + part2);
     }
 }

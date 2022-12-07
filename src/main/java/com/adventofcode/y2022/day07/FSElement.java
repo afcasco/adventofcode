@@ -16,7 +16,7 @@ public class FSElement {
         this.path = path;
     }
 
-    public long getSize() {
+    public int getSize() {
         return this.size;
     }
 

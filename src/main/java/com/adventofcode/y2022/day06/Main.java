@@ -7,8 +7,7 @@ import java.util.stream.IntStream;
 
 public class Main {
 
-    public static int findStart(String input, int length) throws IOException {
-        String data = IOUtils.readInputFile(input).get(0);
+    public static int findStart(String data, int length) {
         return IntStream.range(length, data.length())
                 .parallel()
                 .filter(i -> data.substring(i - length, i).chars().distinct().count() == length)
@@ -16,7 +15,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println("Part 1 result: " + findStart("day06input", 4));
-        System.out.println("Part 2 result: " + findStart("day06input", 14));
+        String data = IOUtils.readInputFile("day06input").get(0);
+        System.out.println("Part 1 result: " + findStart(data, 4));
+        System.out.println("Part 2 result: " + findStart(data, 14));
     }
 }

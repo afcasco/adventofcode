@@ -1,17 +1,25 @@
 package com.adventofcode.y2022.day09;
 
 public class Coordinates {
-    int x;
-    int y;
+    private int x;
+    private int y;
 
     public Coordinates() {
         this.x = 0;
         this.y = 0;
     }
 
-    public Coordinates(int x, int y){
-        this.x= x;
+    public Coordinates(int x, int y) {
+        this.x = x;
         this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     public void move(char direction) {
@@ -23,10 +31,19 @@ public class Coordinates {
         }
     }
 
-    public static boolean touch(Coordinates a, Coordinates b){
-        return Math.abs(a.x - b.x) <=1 && Math.abs( a.y - b.y) <= 1;
+    public static boolean touch(Coordinates a, Coordinates b) {
+        return Math.abs(a.x - b.x) <= 1 && Math.abs(a.y - b.y) <= 1;
     }
 
+
+    public void followHead(Coordinates head) {
+        if (this.x != head.x) {
+            this.x += head.x > this.x ? 1 : -1;
+        }
+        if (this.y != head.y) {
+            this.y += head.y > this.y ? 1 : -1;
+        }
+    }
 
 
     @Override
@@ -46,6 +63,7 @@ public class Coordinates {
         result = 31 * result + y;
         return result;
     }
+
 
     @Override
     public String toString() {

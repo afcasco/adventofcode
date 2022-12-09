@@ -9,6 +9,11 @@ public class Coordinates {
         this.y = 0;
     }
 
+    public Coordinates(int x, int y){
+        this.x= x;
+        this.y = y;
+    }
+
     public void move(char direction) {
         switch (direction) {
             case 'U' -> y++;
@@ -16,6 +21,10 @@ public class Coordinates {
             case 'L' -> x--;
             case 'R' -> x++;
         }
+    }
+
+    public static boolean touch(Coordinates a, Coordinates b){
+        return Math.abs(a.x - b.x) <=1 && Math.abs( a.y - b.y) <= 1;
     }
 
 

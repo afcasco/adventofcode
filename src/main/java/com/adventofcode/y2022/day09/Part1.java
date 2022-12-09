@@ -10,8 +10,10 @@ public class Part1 {
 
         List<Move> moves = IOUtils.readInputFile("day09sample").stream().map(Move::new).toList();
         Rope rope = new Rope();
-        moves.forEach(rope::applyMove);
-        System.out.println(moves.size());
+
+        Coordinates a = new Coordinates(5,1);
+        Coordinates b = new Coordinates(3,0);
+        System.out.println(Coordinates.touch(a,b));
 
     }
 }

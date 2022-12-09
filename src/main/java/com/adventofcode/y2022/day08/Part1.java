@@ -9,7 +9,7 @@ import java.util.List;
 public class Part1 {
 
     public static void main(String[] args) throws IOException {
-        List<String> data = IOUtils.readInputFile("day08input");
+        List<String> data = IOUtils.fileToLines("day08input");
         int visibleTrees = 0;
         int[][] patch = new int[99][99];
         for (int i = 0; i < 99; i++) {

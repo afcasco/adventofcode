@@ -25,7 +25,7 @@ public class Part1 {
                 "Z", 2);
 
 
-        List<String> data = IOUtils.readInputFile("day02input");
+        List<String> data = IOUtils.fileToLines("day02input");
 
         List<Integer[]> numbers = data.stream()
                 .map(i -> i.split(" "))

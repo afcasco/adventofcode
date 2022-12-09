@@ -18,7 +18,7 @@ public class Part2 {
     }
 
     public static int result() throws IOException {
-        List<String> data = IOUtils.readInputFile("day04input");
+        List<String> data = IOUtils.fileToLines("day04input");
         return (int) data.stream().map(str -> str.split(","))
                 .map(i -> List.of(joinSections(i[0]), joinSections(i[1])))
                 .map(i -> i.get(0).removeAll(i.get(1)))

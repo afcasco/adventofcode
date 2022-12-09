@@ -14,7 +14,7 @@ public class Part2 {
 
     public static void main(String[] args) throws IOException {
         // Get data into int array
-        List<String> data = IOUtils.readInputFile("day08input");
+        List<String> data = IOUtils.fileToLines("day08input");
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
                 PATCH[i][j] = data.get(i).charAt(j) - 48;

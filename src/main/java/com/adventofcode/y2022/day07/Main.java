@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         // Reads input and loads it into the ElfFileSystem using the constructor.
-        List<String> data = IOUtils.readInputFile("day07input");
+        List<String> data = IOUtils.fileToLines("day07input");
         ElfFileSystem fs = new ElfFileSystem(data);
 
         //  Generates a map, keys are all the ElfFileSystem paths, values are all the path contents size added.

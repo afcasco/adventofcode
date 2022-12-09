@@ -1,32 +1,39 @@
 package com.adventofcode.y2022.day09;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Rope {
-
-    private final Coordinates head;
-    private final Coordinates tail;
-    private final Set<Coordinates> headKnownCords;
-
-    public Rope() {
-        this.head = new Coordinates();
-        this.tail = new Coordinates();
-        this.headKnownCords = new HashSet<>();
-        this.headKnownCords.add(new Coordinates(0, 0));
+    public record Move(char direction, int units) {
     }
 
-    public Set<Coordinates> getHeadKnownCords() {
-        return headKnownCords;
+    private final Coordinates head;
+    private final List<Coordinates> knots;
+    private final int length;
+
+    private final Set<Coordinates> tailKnownCords;
+
+    public Rope(int length) {
+        this.head = new Coordinates();
+        this.length = length;
+        knots = Stream.generate(Coordinates::new).limit(length).toList();
+        this.tailKnownCords = Stream.of(new Coordinates()).collect(Collectors.toSet());
     }
 
     public void applyMove(Move move) {
-        for (int i = 0; i < move.getUnits(); i++) {
-            head.move(move.getDirection());
-            if (!Coordinates.touch(head, tail)) {
-                tail.followHead(head);
-                headKnownCords.add(new Coordinates(tail.getX(), tail.getY()));
+        for (int i = 0; i < move.units(); i++) {
+            head.move(move.direction());
+            Coordinates tempKnot = head;
+            for (Coordinates knot : knots) {
+                knot.followHead(tempKnot);
+                tempKnot = knot;
             }
+            tailKnownCords.add(new Coordinates(knots.get(length - 1)));
         }
+    }
+
+    public Set<Coordinates> getTailKnownCords() {
+        return tailKnownCords;
     }
 }

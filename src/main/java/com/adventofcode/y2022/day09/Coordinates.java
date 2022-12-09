@@ -9,17 +9,9 @@ public class Coordinates {
         this.y = 0;
     }
 
-    public Coordinates(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
+    public Coordinates(Coordinates coordinates) {
+        this.x = coordinates.x;
+        this.y = coordinates.y;
     }
 
     public void move(char direction) {
@@ -31,20 +23,16 @@ public class Coordinates {
         }
     }
 
-    public static boolean touch(Coordinates a, Coordinates b) {
-        return Math.abs(a.x - b.x) <= 1 && Math.abs(a.y - b.y) <= 1;
-    }
-
-
     public void followHead(Coordinates head) {
-        if (this.x != head.x) {
-            this.x += head.x > this.x ? 1 : -1;
-        }
-        if (this.y != head.y) {
-            this.y += head.y > this.y ? 1 : -1;
+        if (Math.abs(this.x - head.x) > 1 || Math.abs(this.y - head.y) > 1) {
+            if (this.x != head.x) {
+                this.x += head.x > this.x ? 1 : -1;
+            }
+            if (this.y != head.y) {
+                this.y += head.y > this.y ? 1 : -1;
+            }
         }
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -62,14 +50,5 @@ public class Coordinates {
         int result = x;
         result = 31 * result + y;
         return result;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Coordinates{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
     }
 }

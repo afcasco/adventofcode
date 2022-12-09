@@ -15,7 +15,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        String data = IOUtils.readInputFile("day06input").get(0);
+        String data = IOUtils.fileToLines("day06input").get(0);
         System.out.println("Part 1 result: " + findStart(data, 4));
         System.out.println("Part 2 result: " + findStart(data, 14));
     }

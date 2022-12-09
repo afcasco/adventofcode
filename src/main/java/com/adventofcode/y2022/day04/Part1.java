@@ -19,7 +19,7 @@ public class Part1 {
     }
 
     public static int result() throws IOException {
-        List<String> data = IOUtils.readInputFile("day04input");
+        List<String> data = IOUtils.fileToLines("day04input");
         return (int) data.stream()
                 .map(input -> List.of(transform(input.split(",")[0]),transform(input.split(",")[1])))
                 .filter(list ->

@@ -37,7 +37,7 @@ public class IOUtils {
     }
 
 
-    public static List<String> readInputFile(String fileName) throws IOException {
+    public static List<String> fileToLines(String fileName) throws IOException {
         Path file = Path.of(System.getProperty("user.dir") +
                 File.separator + "src" +
                 File.separator + "main" +
@@ -47,7 +47,7 @@ public class IOUtils {
     }
 
     public static List<String> parseCrates(String inputFile) throws IOException {
-        List<String> input = readInputFile(inputFile);
+        List<String> input = fileToLines(inputFile);
 
         int lastCrateLine = (int) input.stream().filter(i -> i.startsWith("[")).count();
 
@@ -78,7 +78,7 @@ public class IOUtils {
     }
 
     public static List<Move> parseMoves(String inputFile) throws IOException {
-        List<String> input = readInputFile(inputFile);
+        List<String> input = fileToLines(inputFile);
         input = input.subList(10, input.size());
         List<Move> result = new ArrayList<>();
         input.stream()

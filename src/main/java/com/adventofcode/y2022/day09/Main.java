@@ -5,7 +5,7 @@ import com.adventofcode.utils.IOUtils;
 import java.io.IOException;
 import java.util.List;
 
-public class Part1 {
+public class Main {
     public static void main(String[] args) throws IOException {
 
         List<Rope.Move> moves = IOUtils.fileToLines("day09input").stream()

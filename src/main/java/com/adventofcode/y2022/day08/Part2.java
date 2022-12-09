@@ -13,6 +13,7 @@ public class Part2 {
     private static final int[][] PATCH = new int[ROWS][COLS];
 
     public static void main(String[] args) throws IOException {
+        // Get data into int array
         List<String> data = IOUtils.readInputFile("day08input");
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
@@ -20,6 +21,7 @@ public class Part2 {
             }
         }
 
+        // Check each position scenic score and keep the highest
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < PATCH.length; i++) {
             for (int j = 0; j < PATCH.length; j++) {

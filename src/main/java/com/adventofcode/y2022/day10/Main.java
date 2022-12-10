@@ -7,12 +7,15 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        List<String> input = Files.readAllLines(Path.of("src/main/resources/day10input"));
+        List<Instruction> instructions = Files.readAllLines(Path.of("src/main/resources/day10input"))
+                .stream()
+                .map(Instruction::instructionFactory)
+                .toList();
+
         Device device = new Device();
-        device.loadInstructions(input);
 
         System.out.println("Part 1 result: " + device.getStrengthSignals().stream().mapToInt(i -> i).sum());
-
+        device.loadInstructions(instructions);
         System.out.println("-".repeat(40));
         System.out.println(device.getCrtImage());
         System.out.println(device.getStrengthSignals());

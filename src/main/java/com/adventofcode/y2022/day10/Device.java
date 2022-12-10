@@ -10,6 +10,7 @@ public class Device {
     private int crtPos;
     private final List<Integer> points = List.of(20, 60, 100, 140, 180, 220);
     private final StringBuilder crtImage;
+    private final List<Integer> strengthSignals;
 
     public StringBuilder getCrtImage() {
         return crtImage;
@@ -19,8 +20,6 @@ public class Device {
         return strengthSignals;
     }
 
-    private final List<Integer> strengthSignals;
-
     public Device() {
         register = 1;
         cycle = 0;
@@ -29,17 +28,15 @@ public class Device {
         crtImage = new StringBuilder();
     }
 
-    public void loadInstructions(List<String> instructions) {
-        for (String line : instructions) {
-            int length = line.startsWith("n") ? 1 : 2;
-            if (length == 1) {
-                // noop
-                runCycle(length);
+    public void loadInstructions(List<Instruction> instructions) {
+        for (Instruction instruction : instructions) {
+            if (instruction instanceof Noop) {
+                runCycle(instruction.getDuration());
             } else {
+                AddX add = (AddX) instruction;
                 // addX
-                runCycle(length);
-                register += Integer.parseInt(line.split(" ")[1]);
-                
+                runCycle(add.getDuration());
+                register += add.getrValue();
             }
         }
     }
@@ -48,7 +45,6 @@ public class Device {
         // run n cycles
         for (int i = 0; i < n; i++) {
             draw();
-            
             cycle++;
             // Only add signals in the cycles given in the points list
             if (points.contains(cycle)) {
@@ -66,12 +62,12 @@ public class Device {
 
         if (crtPos == register || crtPos == register + 1 || crtPos == register - 1) {
             crtImage.append("#");
-            System.out.println("register: "+register);
-                System.out.println("crtPos: "+crtPos);
+            System.out.println("register: " + register);
+            System.out.println("crtPos: " + crtPos);
         } else {
             crtImage.append("_");
-            System.out.println("register: "+register);
-                System.out.println("crtPos: "+crtPos);
+            System.out.println("register: " + register);
+            System.out.println("crtPos: " + crtPos);
         }
         crtPos++;
     }

@@ -38,9 +38,9 @@ public class Device {
     }
 
     private void runCMD(Instruction instruction) {
-        // run n cycles
+        // run instruction through all needed cicles
         for (int i = 0; i < instruction.getDuration(); i++) {
-            draw();
+            getNextPixel();
             cycle++;
             // Only add signals in the cycles given in the points list
             if (points.contains(cycle)) {
@@ -49,13 +49,14 @@ public class Device {
         }
     }
 
-    private void draw() {
+    private void getNextPixel() {
         // every 40th cycle add a new line and reset horizontal pos to 0
         if (points.contains(cycle - 20)) {
             crtPos = 0;
             displayBuffer.append("\n");
         }
 
+        // if sliding sprite (register+-1) equals crtPos draw # else draw _
         if (crtPos == register || crtPos == register + 1 || crtPos == register - 1) {
             displayBuffer.append("#");
         } else {

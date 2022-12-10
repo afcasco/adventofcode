@@ -15,7 +15,6 @@ public class Main {
     static StringBuilder crtImage = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
-        List<Integer> points = List.of(20, 60, 100, 140, 180, 220);
         List<String> lines = Files.readAllLines(Path.of("src/main/resources/day10input"));
         List<Integer> strengths = new ArrayList<>();
 

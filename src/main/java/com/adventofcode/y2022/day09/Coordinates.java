@@ -14,6 +14,7 @@ public class Coordinates {
         this.y = coordinates.y;
     }
 
+
     public void move(char direction) {
         switch (direction) {
             case 'U' -> y++;

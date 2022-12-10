@@ -15,11 +15,11 @@ public class Main {
         // Part 1
         Rope part1rope = new Rope(1);
         moves.forEach(part1rope::applyMove);
-        System.out.println("Length 1 rope: " + part1rope.getTailKnownCords().size());
+        System.out.println("Length 1 rope: " + part1rope.getTailKnownCoordinates().size());
 
         // Part 2
         Rope part2rope = new Rope(9);
         moves.forEach(part2rope::applyMove);
-        System.out.println("Length 9 rope: " + part2rope.getTailKnownCords().size());
+        System.out.println("Length 9 rope: " + part2rope.getTailKnownCoordinates().size());
     }
 }

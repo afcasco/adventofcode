@@ -12,13 +12,13 @@ public class Rope {
     private final List<Coordinates> knots;
     private final int length;
 
-    private final Set<Coordinates> tailKnownCords;
+    private final Set<Coordinates> tailKnownCoordinates;
 
     public Rope(int length) {
         this.head = new Coordinates();
         this.length = length;
         knots = Stream.generate(Coordinates::new).limit(length).toList();
-        this.tailKnownCords = Stream.of(new Coordinates()).collect(Collectors.toSet());
+        this.tailKnownCoordinates = Stream.of(new Coordinates()).collect(Collectors.toSet());
     }
 
     public void applyMove(Move move) {
@@ -29,11 +29,11 @@ public class Rope {
                 knot.followHead(tempKnot);
                 tempKnot = knot;
             }
-            tailKnownCords.add(new Coordinates(knots.get(length - 1)));
+            tailKnownCoordinates.add(new Coordinates(knots.get(length - 1)));
         }
     }
 
-    public Set<Coordinates> getTailKnownCords() {
-        return tailKnownCords;
+    public Set<Coordinates> getTailKnownCoordinates() {
+        return tailKnownCoordinates;
     }
 }

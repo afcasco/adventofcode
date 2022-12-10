@@ -30,20 +30,16 @@ public class Device {
 
     public void load(List<Instruction> instructions) {
         for (Instruction instruction : instructions) {
-            if (instruction instanceof Noop) {
-                runCycle(instruction.getDuration());
-            } else {
-                AddX add = (AddX) instruction;
-                // addX
-                runCycle(add.getDuration());
-                register += add.getrValue();
+            runCMD(instruction);
+            if (instruction instanceof AddX) {
+                register +=  ((AddX) instruction).getrValue();
             }
         }
     }
 
-    private void runCycle(int n) {
+    private void runCMD(Instruction instruction) {
         // run n cycles
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < instruction.getDuration(); i++) {
             draw();
             cycle++;
             // Only add signals in the cycles given in the points list

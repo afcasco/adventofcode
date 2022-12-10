@@ -9,11 +9,11 @@ public class Device {
     private int register;
     private int crtPos;
     private final List<Integer> points = List.of(20, 60, 100, 140, 180, 220);
-    private final StringBuilder crtImage;
+    private final StringBuilder displayBuffer;
     private final List<Integer> strengthSignals;
 
-    public StringBuilder getCrtImage() {
-        return crtImage;
+    public StringBuilder getDisplayBuffer() {
+        return displayBuffer;
     }
 
     public List<Integer> getStrengthSignals() {
@@ -25,10 +25,10 @@ public class Device {
         cycle = 0;
         crtPos = 0;
         strengthSignals = new ArrayList<>();
-        crtImage = new StringBuilder();
+        displayBuffer = new StringBuilder();
     }
 
-    public void loadInstructions(List<Instruction> instructions) {
+    public void load(List<Instruction> instructions) {
         for (Instruction instruction : instructions) {
             if (instruction instanceof Noop) {
                 runCycle(instruction.getDuration());
@@ -57,17 +57,13 @@ public class Device {
         // every 40th cycle add a new line and reset horizontal pos to 0
         if (points.contains(cycle - 20)) {
             crtPos = 0;
-            crtImage.append("\n");
+            displayBuffer.append("\n");
         }
 
         if (crtPos == register || crtPos == register + 1 || crtPos == register - 1) {
-            crtImage.append("#");
-            System.out.println("register: " + register);
-            System.out.println("crtPos: " + crtPos);
+            displayBuffer.append("#");
         } else {
-            crtImage.append("_");
-            System.out.println("register: " + register);
-            System.out.println("crtPos: " + crtPos);
+            displayBuffer.append("_");
         }
         crtPos++;
     }

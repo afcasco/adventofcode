@@ -4,7 +4,7 @@ public interface Instruction {
 
     int getDuration();
 
-    static Instruction instructionFactory(String instruction) {
+    static Instruction getInstruction(String instruction) {
         if (instruction.startsWith("n")) {
             return new Noop();
         }

@@ -27,7 +27,7 @@ public class Main {
                 IntStream.range(0, monkey.getItems().size()).forEach(item -> {
                     monkey.addInspected();
                     int newWorryLvl = monkey.calcWorryLevel(item);
-                    int yeetTo = monkey.friendlyYeetTo(newWorryLvl);
+                    int yeetTo = monkey.friendlyYeet(newWorryLvl);
                     monkes.get(yeetTo).friendlyCatch(newWorryLvl);
                 });
                 // Clear current monkey item list, he got rid of everything

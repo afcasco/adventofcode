@@ -24,16 +24,8 @@ public class Monkey {
         return items;
     }
 
-    public Operation getOperation() {
-        return operation;
-    }
-
     public int getInspectedElements() {
         return inspectedElements;
-    }
-
-    public int[] getThrowOptions() {
-        return throwOptions;
     }
 
     public void addInspected() {
@@ -73,9 +65,9 @@ public class Monkey {
         items.add(element);
     }
 
-    public int friendlyYeetTo(int worry){
-        return runTest(worry) ? getThrowOptions()[0] :
-                getThrowOptions()[1];
+    public int friendlyYeet(int worry){
+        return runTest(worry) ? throwOptions[0] :
+                throwOptions[1];
     }
 
     public boolean runTest(int value) {

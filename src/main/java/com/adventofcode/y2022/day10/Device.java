@@ -7,13 +7,13 @@ public class Device {
 
     private int cycle;
     private int register;
-    private int crtPos;
+    private int displayPosX;
     private final List<Integer> points = List.of(20, 60, 100, 140, 180, 220);
-    private final StringBuilder displayBuffer;
+    private final StringBuilder display;
     private final List<Integer> strengthSignals;
 
-    public StringBuilder getDisplayBuffer() {
-        return displayBuffer;
+    public StringBuilder getDisplay() {
+        return display;
     }
 
     public List<Integer> getStrengthSignals() {
@@ -23,9 +23,9 @@ public class Device {
     public Device() {
         register = 1;
         cycle = 0;
-        crtPos = 0;
+        displayPosX = 0;
         strengthSignals = new ArrayList<>();
-        displayBuffer = new StringBuilder();
+        display = new StringBuilder();
     }
 
     public void load(List<Instruction> instructions) {
@@ -52,16 +52,16 @@ public class Device {
     private void drawPixel() {
         // every 40th cycle add a new line and reset horizontal pos to 0
         if (points.contains(cycle - 20)) {
-            crtPos = 0;
-            displayBuffer.append("\n");
+            displayPosX = 0;
+            display.append("\n");
         }
 
         // if sliding sprite (register+-1) equals crtPos draw # else draw _
-        if (crtPos == register || crtPos == register + 1 || crtPos == register - 1) {
-            displayBuffer.append("#");
+        if (displayPosX == register || displayPosX == register + 1 || displayPosX == register - 1) {
+            display.append("#");
         } else {
-            displayBuffer.append("_");
+            display.append("_");
         }
-        crtPos++;
+        displayPosX++;
     }
 }

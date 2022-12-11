@@ -17,6 +17,6 @@ public class Main {
         System.out.println("Part 1 result: " + device.getStrengthSignals().stream().mapToInt(i -> i).sum());
 
         System.out.println("-".repeat(40));
-        System.out.println(device.getDisplayBuffer());
+        System.out.println(device.getDisplay());
     }
 }

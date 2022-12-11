@@ -6,12 +6,30 @@ import static com.adventofcode.y2022.day11.Operation.*;
 
 public class Monkey {
 
+    private final List<Integer> items;
+    private final Operation operation;
+    private final int test;
+    private final int[] throwOptions;
+    private int inspectedElements;
+
+    private Monkey(List<Integer> items, Operation operation, int test, int[] throwOptions) {
+        this.items = items;
+        this.operation = operation;
+        this.test = test;
+        this.throwOptions = throwOptions;
+        this.inspectedElements = 0;
+    }
+
     public List<Integer> getItems() {
         return items;
     }
 
     public Operation getOperation() {
         return operation;
+    }
+
+    public int getInspectedElements() {
+        return inspectedElements;
     }
 
     public int getTest() {
@@ -22,16 +40,8 @@ public class Monkey {
         return throwOptions;
     }
 
-    private final List<Integer> items;
-    private final Operation operation;
-    private final int test;
-    private final int[] throwOptions;
-
-    private Monkey(List<Integer> items, Operation operation, int test, int[] throwOptions) {
-        this.items = items;
-        this.operation = operation;
-        this.test = test;
-        this.throwOptions = throwOptions;
+    public void increaseInspected(){
+        this.inspectedElements++;
     }
 
     public static Monkey parseMonkey(String monkey) {
@@ -77,6 +87,7 @@ public class Monkey {
                 ", operation=" + operation +
                 ", test=" + test +
                 ", throwOptions=" + Arrays.toString(throwOptions) +
+                ", inspectedElements=" + inspectedElements +
                 '}';
     }
 }

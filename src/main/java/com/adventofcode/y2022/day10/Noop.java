@@ -7,7 +7,7 @@ public class Noop implements Instruction {
     public Noop() {
         this.duration = 1;
     }
-
+    @Override
     public int getDuration() {
         return duration;
     }

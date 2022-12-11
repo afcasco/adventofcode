@@ -40,7 +40,7 @@ public class Device {
     private void runCMD(Instruction instruction) {
         // run instruction through all needed cicles
         for (int i = 0; i < instruction.getDuration(); i++) {
-            getNextPixel();
+            drawPixel();
             cycle++;
             // Only add signals in the cycles given in the points list
             if (points.contains(cycle)) {
@@ -49,7 +49,7 @@ public class Device {
         }
     }
 
-    private void getNextPixel() {
+    private void drawPixel() {
         // every 40th cycle add a new line and reset horizontal pos to 0
         if (points.contains(cycle - 20)) {
             crtPos = 0;

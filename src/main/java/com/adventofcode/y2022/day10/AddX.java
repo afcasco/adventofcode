@@ -14,6 +14,7 @@ public class AddX implements Instruction {
         return rValue;
     }
 
+    @Override
     public int getDuration() {
         return duration;
     }

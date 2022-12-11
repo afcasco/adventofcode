@@ -6,13 +6,15 @@ import static com.adventofcode.y2022.day11.Operation.*;
 
 public class Monkey {
 
-    private final List<Integer> items;
+    private final List<Long> items;
     private final Operation operation;
+
     private final int test;
+
     private final int[] throwOptions;
     private int inspectedElements;
 
-    private Monkey(List<Integer> items, Operation operation, int test, int[] throwOptions) {
+    private Monkey(List<Long> items, Operation operation, int test, int[] throwOptions) {
         this.items = items;
         this.operation = operation;
         this.test = test;
@@ -20,8 +22,12 @@ public class Monkey {
         this.inspectedElements = 0;
     }
 
-    public List<Integer> getItems() {
+    public List<Long> getItems() {
         return items;
+    }
+
+    public int getTest() {
+        return test;
     }
 
     public int getInspectedElements() {
@@ -46,7 +52,6 @@ public class Monkey {
         return new int[]{Integer.parseInt(line1.split("monkey")[1].trim()),
                 Integer.parseInt(line2.split("monkey")[1].trim())
         };
-
     }
 
     private static int parseTest(String line) {
@@ -54,48 +59,39 @@ public class Monkey {
 
     }
 
-    public void clearItems(){
+    public void clearItems() {
         items.clear();
     }
 
-    public int calcWorryLevel(int index){
-        int worry = items.get(index);
+    public long calcWorryLevel(int index, int lcm) {
+        long worry = items.get(index);
         worry = operation.computeNext(worry);
-        worry /=3;
-        return worry;
+        // For part 1:
+        // return worry / 3;
+
+        // For part 2
+        return worry % lcm;
     }
 
-    public void friendlyCatch(int element){
+    public void friendlyCatch(long element) {
         items.add(element);
     }
 
-    public int friendlyYeet(int worry){
+    public int friendlyYeet(long worry) {
         return runTest(worry) ? throwOptions[0] :
                 throwOptions[1];
     }
 
-    private boolean runTest(int value) {
+    private boolean runTest(long value) {
         return value % test == 0;
     }
 
-    private static List<Integer> parseItems(String items) {
+    private static List<Long> parseItems(String items) {
         String parsed = items.replaceAll("\\D", " ").trim().replaceAll(" + ", ",");
-        List<Integer> itemList = new ArrayList<>();
+        List<Long> itemList = new ArrayList<>();
         String[] array = parsed.split(",");
         for (String a : array)
-            itemList.add(Integer.parseInt(a));
+            itemList.add(Long.parseLong(a));
         return itemList;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Monkey{" +
-                "items=" + items +
-                ", operation=" + operation +
-                ", test=" + test +
-                ", throwOptions=" + Arrays.toString(throwOptions) +
-                ", inspectedElements=" + inspectedElements +
-                '}';
     }
 }

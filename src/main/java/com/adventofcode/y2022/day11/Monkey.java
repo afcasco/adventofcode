@@ -74,7 +74,7 @@ public class Monkey {
                 throwOptions[1];
     }
 
-    public boolean runTest(int value) {
+    private boolean runTest(int value) {
         return value % test == 0;
     }
 

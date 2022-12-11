@@ -11,6 +11,7 @@ import java.util.stream.IntStream;
 public class Main {
     public static void main(String[] args) throws IOException {
 
+        // Get them monkeys into a list
         List<Monkey> monkeys = Arrays.stream(Files
                         .readString(Path.of("src/main/resources/day11sample")).
                         split("\n\n"))
@@ -46,7 +47,7 @@ public class Main {
                 .limit(2)
                 .forEach(System.out::println);
 
-        // Get and print monkeyBusiness
+        // Get and print monkeyBusiness level
         int monkeyBusiness = monkeys.stream()
                 .map(Monkey::getInspectedElements)
                 .sorted()

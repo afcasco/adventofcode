@@ -1,8 +1,8 @@
 package com.adventofcode.y2021.day2;
 
 public class Move {
-    private String command;
-    private int units;
+    private final String command;
+    private final int units;
 
     public String getCommand() {
         return command;

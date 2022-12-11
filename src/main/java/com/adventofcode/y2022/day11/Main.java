@@ -11,41 +11,45 @@ import java.util.stream.IntStream;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        // Parse input into list of monkeys
-        String[] monkeys = Files.readString(Path.of("src/main/resources/day11sample")).split("\n\n");
-        List<Monkey> monkes = Arrays.stream(monkeys).map(Monkey::parseMonkey).toList();
+        List<Monkey> monkeys = Arrays.stream(Files
+                        .readString(Path.of("src/main/resources/day11sample")).
+                        split("\n\n"))
+                .map(Monkey::parseMonkey)
+                .toList();
 
         // Set number of rounds
         int rounds = 20;
 
-
         for (int i = 0; i < rounds; i++) {
             // For every monkey
-            for (Monkey monkey : monkes) {
-
+            for (Monkey monkey : monkeys) {
                 // Check and throw every item
                 IntStream.range(0, monkey.getItems().size()).forEach(item -> {
                     monkey.addInspected();
                     int newWorryLvl = monkey.calcWorryLevel(item);
                     int yeetTo = monkey.friendlyYeet(newWorryLvl);
-                    monkes.get(yeetTo).friendlyCatch(newWorryLvl);
+                    monkeys.get(yeetTo).friendlyCatch(newWorryLvl);
                 });
                 // Clear current monkey item list, he got rid of everything
-                monkey.getItems().clear();
+                monkey.clearItems();
             }
         }
 
-        // Print each monkey details at the end of the run
-        for (int i = 0; i < monkes.size(); i++) {
-            System.out.println("index: " + i + " " + monkes.get(i));
-        }
+        monkeys.forEach(System.out::println);
+
+        // Top 2 business monkeys
+        System.out.println("\nTop 2 monkeys: ");
+        monkeys.stream().map(Monkey::getInspectedElements)
+                .sorted(Comparator.reverseOrder())
+                .limit(2)
+                .forEach(System.out::println);
 
         // Get and print monkeyBusiness
-        int monkeyBusiness = monkes.stream()
+        int monkeyBusiness = monkeys.stream()
                 .map(Monkey::getInspectedElements).sorted(Comparator.reverseOrder())
                 .mapToInt(i -> i)
                 .limit(2).reduce(1, (a, b) -> a * b);
-        System.out.println(monkeyBusiness);
 
+        System.out.println("\nTroop business level: " + monkeyBusiness);
     }
 }

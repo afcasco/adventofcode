@@ -27,7 +27,7 @@ public class Operation {
 
     @Override
     public String toString() {
-        return "old " + operator + " " + value;
+        return "old " + operator + " " + ((value == -1) ? "old" : value);
     }
 
 

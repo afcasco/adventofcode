@@ -54,6 +54,10 @@ public class Monkey {
 
     }
 
+    public void clearItems(){
+        items.clear();
+    }
+
     public int calcWorryLevel(int index){
         int worry = items.get(index);
         worry = operation.computeNext(worry);

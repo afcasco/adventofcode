@@ -35,10 +35,12 @@ public class Main {
             }
         }
 
+        // Situation overview
+        System.out.println("Overall monkey situation:");
         monkeys.forEach(System.out::println);
 
         // Top 2 business monkeys
-        System.out.println("\nTop 2 monkeys: ");
+        System.out.println("\nTop 2 monkey inspectors: ");
         monkeys.stream().map(Monkey::getInspectedElements)
                 .sorted(Comparator.reverseOrder())
                 .limit(2)
@@ -46,10 +48,12 @@ public class Main {
 
         // Get and print monkeyBusiness
         int monkeyBusiness = monkeys.stream()
-                .map(Monkey::getInspectedElements).sorted(Comparator.reverseOrder())
+                .map(Monkey::getInspectedElements)
+                .sorted()
+                .skip(monkeys.size() - 2)
                 .mapToInt(i -> i)
-                .limit(2).reduce(1, (a, b) -> a * b);
+                .reduce(1, (a, b) -> a * b);
 
-        System.out.println("\nTroop business level: " + monkeyBusiness);
+        System.out.println("\nTroop business level: " + monkeyBusiness+"!");
     }
 }

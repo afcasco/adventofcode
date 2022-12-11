@@ -32,15 +32,11 @@ public class Monkey {
         return inspectedElements;
     }
 
-    public int getTest() {
-        return test;
-    }
-
     public int[] getThrowOptions() {
         return throwOptions;
     }
 
-    public void increaseInspected(){
+    public void addInspected() {
         this.inspectedElements++;
     }
 
@@ -54,23 +50,39 @@ public class Monkey {
                 parseThrowOptions(lines.get(4), lines.get(5)));
     }
 
-    static int[] parseThrowOptions(String line1, String line2) {
+    private static int[] parseThrowOptions(String line1, String line2) {
         return new int[]{Integer.parseInt(line1.split("monkey")[1].trim()),
                 Integer.parseInt(line2.split("monkey")[1].trim())
         };
 
     }
 
-    static int parseTest(String line) {
+    private static int parseTest(String line) {
         return Integer.parseInt(line.split("by")[1].trim());
 
+    }
+
+    public int calcWorryLevel(int index){
+        int worry = items.get(index);
+        worry = operation.computeNext(worry);
+        worry /=3;
+        return worry;
+    }
+
+    public void friendlyCatch(int element){
+        items.add(element);
+    }
+
+    public int friendlyYeetTo(int worry){
+        return runTest(worry) ? getThrowOptions()[0] :
+                getThrowOptions()[1];
     }
 
     public boolean runTest(int value) {
         return value % test == 0;
     }
 
-    static List<Integer> parseItems(String items) {
+    private static List<Integer> parseItems(String items) {
         String parsed = items.replaceAll("\\D", " ").trim().replaceAll(" + ", ",");
         List<Integer> itemList = new ArrayList<>();
         String[] array = parsed.split(",");

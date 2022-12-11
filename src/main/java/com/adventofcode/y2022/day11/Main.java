@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -21,18 +22,14 @@ public class Main {
         for (int i = 0; i < rounds; i++) {
             // For every monkey
             for (Monkey monkey : monkes) {
+
                 // Check and throw every item
-
-                for (int j = 0; j < monkey.getItems().size(); j++) {
-
-                    monkey.increaseInspected();
-                    int worry = monkey.getItems().get(j);
-                    worry = monkey.getOperation().computeNext(worry);
-                    worry /= 3;
-                    int recipient = monkey.runTest(worry) ? monkey.getThrowOptions()[0] :
-                            monkey.getThrowOptions()[1];
-                    monkes.get(recipient).getItems().add(worry);
-                }
+                IntStream.range(0, monkey.getItems().size()).forEach(item -> {
+                    monkey.addInspected();
+                    int newWorryLvl = monkey.calcWorryLevel(item);
+                    int yeetTo = monkey.friendlyYeetTo(newWorryLvl);
+                    monkes.get(yeetTo).friendlyCatch(newWorryLvl);
+                });
                 // Clear current monkey item list, he got rid of everything
                 monkey.getItems().clear();
             }

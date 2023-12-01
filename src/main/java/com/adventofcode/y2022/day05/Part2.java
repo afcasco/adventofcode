@@ -3,6 +3,7 @@ package com.adventofcode.y2022.day05;
 import com.adventofcode.utils.IOUtils;
 
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 public class Part2 {
 
@@ -10,8 +11,6 @@ public class Part2 {
         CrateContainer crateContainer = new CrateContainer();
         crateContainer.fillCrates(IOUtils.parseCrates(inputFile));
         IOUtils.parseMoves(inputFile).forEach(crateContainer::moveWithCrate9001);
-        StringBuilder builder = new StringBuilder();
-        crateContainer.getAllCrates().stream().map(Crate::getTopElement).forEach(builder::append);
-        return builder.toString();
+        return crateContainer.getAllCrates().stream().map(Crate::getTopElement).collect(Collectors.joining());
     }
 }

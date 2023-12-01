@@ -2,8 +2,11 @@ package com.adventofcode.utils;
 
 import com.adventofcode.y2022.day05.Move;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -86,5 +89,18 @@ public class IOUtils {
                 .map(i -> List.of(Integer.parseInt(i[1]), Integer.parseInt(i[3]) - 1, Integer.parseInt(i[5]) - 1))
                 .forEach(i -> result.add(new Move(i.get(0), i.get(1), i.get(2))));
         return result;
+    }
+
+    public static List<String> getInput(String stringUrl) throws IOException {
+        List<String> input = new ArrayList<>();
+        URL url = new URL(stringUrl);
+        String inputLine;
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()))) {
+            while ((inputLine = bufferedReader.readLine()) != null) {
+                input.add(inputLine);
+            }
+        }
+
+        return input;
     }
 }

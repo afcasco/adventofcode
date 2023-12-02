@@ -6,7 +6,7 @@ import java.util.List;
 public class Game {
 
 
-    public record Round(int red, int blue, int green) {
+    private record Round(int red, int blue, int green) {
     }
 
     private final int id;

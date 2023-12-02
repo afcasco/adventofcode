@@ -1,12 +1,13 @@
 package com.adventofcode.y2023.day02;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Game {
 
 
-    public record Round(int red, int blue, int green) { }
+    public record Round(int red, int blue, int green) {
+    }
 
     private final int id;
     private final List<Round> rounds;
@@ -37,34 +38,25 @@ public class Game {
     }
 
 
-
     public static Game parseGame(String gameData) {
         int gameId = Integer.parseInt(gameData.split(":")[0].split(" ")[1]);
-        List<Round> gameRounds = new ArrayList<>();
-
         String[] rounds = gameData.split(":")[1].split(";");
 
-        for (String round : rounds) {
+        List<Round> gameRounds = Arrays.stream(rounds).map(roundData -> {
             int red = 0;
             int blue = 0;
             int green = 0;
-            String[] colors = round.split(",");
+            String[] colors = roundData.split(",");
+
             for (String color : colors) {
                 color = color.trim();
-                if (color.contains("blue")) {
-                    blue = Integer.parseInt(color.split(" ")[0]);
-                }
-                if (color.contains("red")) {
-                    red = Integer.parseInt(color.split(" ")[0]);
-                }
-                if (color.contains("green")) {
-                    green = Integer.parseInt(color.split(" ")[0]);
-                }
+                int amount = Integer.parseInt(color.split(" ")[0]);
+                blue = color.contains("blue") ? amount : blue;
+                red = color.contains("red") ? amount : red;
+                green = color.contains("green") ? amount : green;
             }
-            Round gameRound = new Round(red, blue, green);
-            gameRounds.add(gameRound);
-
-        }
+            return new Round(red, blue, green);
+        }).toList();
 
         return new Game(gameId, gameRounds);
     }

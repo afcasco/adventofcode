@@ -50,10 +50,10 @@ public class Game {
 
             for (String color : colors) {
                 color = color.trim();
-                int amount = Integer.parseInt(color.split(" ")[0]);
-                blue = color.contains("blue") ? amount : blue;
-                red = color.contains("red") ? amount : red;
-                green = color.contains("green") ? amount : green;
+                int cubes = Integer.parseInt(color.split(" ")[0]);
+                blue = color.contains("blue") ? cubes : blue;
+                red = color.contains("red") ? cubes : red;
+                green = color.contains("green") ? cubes : green;
             }
             return new Round(red, blue, green);
         }).toList();

@@ -18,6 +18,5 @@ public class Part1 {
                 .mapToInt(Game::getId).sum();
 
         System.out.println(result);
-
     }
 }

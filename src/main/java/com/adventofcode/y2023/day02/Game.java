@@ -30,20 +30,9 @@ public class Game {
     }
 
     public int minimumCubesPower() {
-        int red=0;
-        int blue=0;
-        int green=0;
-        for(Round round : rounds){
-            if (round.red > red) {
-                red = round.red;
-            }
-            if(round.blue > blue){
-                blue = round.blue;
-            }
-            if(round.green > green) {
-                green = round.green;
-            }
-        }
+        int red = rounds.stream().mapToInt(round -> round.red).max().orElse(0);
+        int blue = rounds.stream().mapToInt(round -> round.blue).max().orElse(0);
+        int green = rounds.stream().mapToInt(round -> round.green).max().orElse(0);
         return red * blue * green;
     }
 
